@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
   email: string = "";
 
   phonePattern = '^[0-9]+$';
+  emailPattern = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'phone', 'actions'];
 
