@@ -66,8 +66,16 @@ export class RegistrationComponent implements OnInit {
 
     this.clientService.saveClient(client).subscribe((data: any[]) => {
       alert("Cliente guardado correctamente.");
-
+      this.clearForm(form);
       this.getClients();
+    });
+  }
+
+  clearForm(form: NgForm) {
+    form.resetForm({
+      firstName: '',
+      lastName: '',
+      phone: ''
     });
   }
 
