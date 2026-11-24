@@ -9,7 +9,7 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
     'Access-Control-Allow-Origin': '*',
     //Authorization: 'my-auth-token'
     'MyClientCert': '',        // This is empty
@@ -48,7 +48,11 @@ export class ClientService {
   }
 
   public saveClient(client: Client): Observable<any> {
-      return this.http.post<Client>(this.urlClients + "/client", client, httpOptions).pipe(catchError(this.handleError));
+    return this.http.post<Client>(this.urlClients + "/client", client, httpOptions).pipe(catchError(this.handleError));
+  }
+
+  public deleteClient(id: number): Observable<any> {
+    return this.http.delete(this.urlClients + "/clients/" + id, httpOptions).pipe(catchError(this.handleError));
   }
 
 }

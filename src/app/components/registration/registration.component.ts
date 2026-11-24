@@ -86,4 +86,14 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+  onDelete(client: Client) {
+    if (!confirm("Realmente deseas eliminar el cliente?")) {
+      return;
+    }
+
+    this.clientService.deleteClient(client.id).subscribe(() => {
+      alert("Cliente eliminado correctamente.");
+      this.getClients();
+    });
+  }
 }

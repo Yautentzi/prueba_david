@@ -67,7 +67,7 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
             <mat-cell *matCellDef="let element">
               <div class="button">
-                <button mat-button><i class="fa fa-delete" *ngIf="element.id"></i> Delete </button>
+                <button mat-button type = "button" (click) = "onDelete(element)" ><i class="fa fa-delete" *ngIf="element.id"></i> Delete </button>
               </div>
             </mat-cell >
         </ng-container>
