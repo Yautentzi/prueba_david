@@ -19,8 +19,15 @@
 
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Phone</mat-label>
-      <input matInput placeholder="Phone" name = "phone" [(ngModel)]="phone" required>
-      <mat-error>The Phone is mandatory</mat-error>
+      <input matInput placeholder = "Phone" name = "phone" inputmode = "numeric" [(ngModel)]="phone" #phoneCtrl = "ngModel" required [pattern]="phonePattern">
+      <mat-error *ngIf="phoneCtrl.hasError('required')">The Phone is mandatory</mat-error>
+      <mat-error *ngIf="phoneCtrl.hasError('pattern')">The format Phone is incorrect</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" name = "email" [(ngModel)]="email" required>
+      <mat-error>The Email is mandatory</mat-error>
     </mat-form-field>
 
     <div *ngIf="clientForm.submitted && clientForm.invalid" class = "message-error">

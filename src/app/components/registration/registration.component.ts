@@ -18,6 +18,9 @@ export class RegistrationComponent implements OnInit {
   firstName : string = "";
   lastName: string = "";
   phone: string = "";
+  email: string = "";
+
+  phonePattern = '^[0-9]+$';
 
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'phone', 'actions'];
 
@@ -40,7 +43,8 @@ export class RegistrationComponent implements OnInit {
           id: client.id,
           firstName: client.firstName,
           lastName: client.lastName,
-          phone: client.phone
+          phone: client.phone,
+          email: client.email
         });
       });
 
@@ -61,7 +65,8 @@ export class RegistrationComponent implements OnInit {
       id: 0,
       firstName: this.firstName,
       lastName: this.lastName,
-      phone: this.phone
+      phone: this.phone,
+      email: this.email
     }
 
     this.clientService.saveClient(client).subscribe((data: any[]) => {
@@ -75,7 +80,8 @@ export class RegistrationComponent implements OnInit {
     form.resetForm({
       firstName: '',
       lastName: '',
-      phone: ''
+      phone: '',
+      email: ''
     });
   }
 
